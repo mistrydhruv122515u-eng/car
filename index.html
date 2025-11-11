@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Car Shop</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <style>
+    /* ========== GLOBAL STYLE ========== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+      background-color: #fff !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .navbar-brand {
+      font-weight: 600;
+      color: #007BFF !important;
+      font-size: 1.3rem;
+    }
+
+    .nav-link {
+      color: #333 !important;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #007BFF !important;
+    }
+
+    /* ========== HEADER IMAGE SECTION ========== */
+    .hero {
+      width: 100%;
+      max-height: 420px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .hero img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 0;
+    }
+
+    /* ========== SEARCH BAR ========== */
+    .example {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .example input[type="text"] {
+      padding: 10px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .example input[type="text"]:focus {
+      border-color: #007BFF;
+      box-shadow: 0 0 5px rgba(0,123,255,0.3);
+    }
+
+    .example button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007BFF;
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .example button:hover {
+      background-color: #0056b3;
+    }
+
+    /* ========== SECTION STYLE ========== */
+    .section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      max-width: 1200px;
+      margin: 40px auto;
+    }
+
+    .section h3 {
+      display: flex;
+      align-items: center;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 15px;
+    }
+
+    .section h3::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 22px;
+      background: #007BFF;
+      border-radius: 3px;
+      margin-right: 10px;
+    }
+
+    /* ========== CAR CAROUSEL ========== */
+    .car-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+    }
+
+    .car-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .car-container::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+    }
+
+    .car-card {
+      flex: 0 0 230px;
+      background: #fff;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+
+    .car-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    .car-card img {
+      width: 200px;
+      height: 120px;
+      object-fit: contain;
+      margin-top: 10px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+    }
+
+    .car-card h4 {
+      margin: 10px 0 5px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .car-card p {
+      color: #555;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .car-card input[type="button"] {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .car-card input[type="button"]:hover {
+      background-color: #0056b3;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background-color: #fff;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+      padding: 25px 0;
+      margin-top: 40px;
+    }
+
+    footer p, footer a {
+      color: #555;
+      font-size: 0.9rem;
+    }
+
+    footer a:hover {
+      color: #007BFF;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">CarShop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="car.html">Cars</a></li>
+          <li class="nav-item"><a class="nav-link" href="About.html">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO IMAGE -->
+  <div class="hero">
+  
+  </div>
+
+  <!-- SEARCH -->
+  <form class="example" action="">
+    <input type="text" placeholder="Search for your dream car..." name="search">
+    <button type="submit">Search</button>
+  </form>
+
+  <!-- RECOMMENDED SECTION -->
+  <div class="section">
+    <h3>🚘 Recommended For You</h3>
+    <div class="car-container">
+      <div class="car-card">
+        <img src="images/Baleno.jpg" alt="Baleno">
+        <h4>Maruti Baleno</h4>
+        <p>Rs. 5.99 - 9.10 Lakh</p>
+        <a href="car.html"><input type="button" value="Shop"></a>
+      </div>
+
+      <div class="car-card">
+        <img src="images/front-left-side-47.avif" alt="Kushaq">
+        <h4>Skoda Kushaq</h4>
+        <p>Rs. 7.55 - 12.80 Lakh</p>
+         <a href="car.html"><input type="button" value="Shop"></a>
+      </div>
+
+      <div class="car-card">
+        <img src="images/toyota.avif" alt="Glanza">
+        <h4>Toyota Glanza</h4>
+        <p>Rs. 6.39 - 9.15 Lakh</p>
+         <a href="car.html"><input type="button" value="Shop"></a>
+      </div>
+
+      <div class="car-card">
+        <img src="images/Brezza.avif" alt="Brezza">
+        <h4>Maruti Brezza</h4>
+        <p>Rs. 8.26 - 13.01 Lakh</p>
+         <a href="car.html"><input type="button" value="Shop"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ELECTRIC CARS -->
+  <div class="section">
+    <h3>⚡ Our Electric Cars</h3>
+    <div class="car-container">
+      <div class="car-card">
+        <img src="images/Tata Nexon .avif" alt="EV 1">
+        <h4>Tata Nexon EV</h4>
+        <p>Rs. 14.49 - 17.19 Lakh</p>
+      </div>
+
+      <div class="car-card">
+        <img src="images/MG_ZS.avif" alt="EV 2">
+        <h4>MG ZS EV</h4>
+        <p>Rs. 22.00 - 25.00 Lakh</p>
+      </div>
+
+      <div class="car-card">
+        <img src="images/xuv400.avif" alt="EV 3">
+        <h4>Mahindra XUV400</h4>
+        <p>Rs. 15.98 - 18.98 Lakh</p>
+      </div>
+
+      <div class="car-card">
+        <img src="images/Hyundai .avif" alt="EV 4">
+        <h4>Hyundai Kona EV</h4>
+        <p>Rs. 23.84 - 24.03 Lakh</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-top text-center">
+    <div class="container">
+      <p class="mb-2">&copy; 2025 CarShop, Dhruv Mistry.</p>
+      
+    </div>
+  </footer>
+
+  <script src="js/bootstrap.bundle.js"></script>
+</body>
+</html>

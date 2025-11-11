@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Car Shop</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="dist/vanilla-tabs.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: #fff !important;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .navbar-brand {
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+
+    .nav-link {
+      color: #333 !important;
+      font-weight: 500;
+      margin-right: 10px;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: #007BFF !important;
+    }
+
+    /* Section Title */
+    h1 {
+      text-align: center;
+      font-weight: 600;
+      margin-top: 40px;
+      margin-bottom: 25px;
+      color: #222;
+    }
+
+    /* Brand Section */
+    .brand-section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      max-width: 1000px;
+      margin: auto;
+      padding: 25px 30px;
+    }
+
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 25px;
+      text-align: center;
+    }
+
+    .brand {
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 15px 5px;
+      background: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .brand:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .brand img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .brand p {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    /* Hide extra brands */
+    .hidden {
+      display: none;
+    }
+
+    .view-btn {
+      display: block;
+      width: fit-content;
+      margin: 25px auto 5px;
+      background: none;
+      border: none;
+      color: #007BFF;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .view-btn:hover {
+      text-decoration: underline;
+    }
+
+    /* Tabs Section */
+    .tabs {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .tabs input[type="button"] {
+      background-color: #f1f3f5;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 8px 15px;
+      margin: 5px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    .tabs input[type="button"]:hover {
+      background-color: #007BFF;
+      color: white;
+      border-color: #007BFF;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #fff;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+      padding: 30px 0;
+      margin-top: 50px;
+    }
+
+    footer p, footer a {
+      color: #555;
+    }
+
+    footer a:hover {
+      color: #007BFF;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">CarShop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="car.html">Cars</a></li>
+          <li class="nav-item"><a class="nav-link" href="About.html">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Brand Section -->
+  <h1>All Brands</h1>
+  <div class="brand-section">
+    <div class="brand-grid" id="brandGrid">
+      <!-- Visible brands -->
+      <div class="brand"><img src="images/Hyundai.png"><p>Hyundai</p></div>
+      <div class="brand"><img src="images/Maruti Suzuki.jpeg"><p>Maruti Suzuki</p></div>
+      <div class="brand"><img src="images/Mahindra.jpeg"><p>Mahindra</p></div>
+      <div class="brand"><img src="images/tata.png"><p>Tata</p></div>
+      <div class="brand"><img src="images/Toyota.png"><p>Toyota</p></div>
+      <div class="brand"><img src="images/kia.jpeg"><p>Kia</p></div>
+      <div class="brand"><img src="images/BMW.svg.webp"><p>BMW</p></div>
+      <div class="brand"><img src="images/Skoda.png"><p>Skoda</p></div>
+      <div class="brand"><img src="images/Renault.jpeg"><p>Renault</p></div>
+      <div class="brand"><img src="images/MG-Motor-Logo-2021-present.png"><p>MG</p></div>
+
+      <!-- Hidden brands -->
+      <div class="brand hidden"><img src="images/Mercedes-Benz.png"><p>Mercedes-Benz</p></div>
+      <div class="brand hidden"><img src="images/Audi.jpeg"><p>Audi</p></div>
+      <div class="brand hidden"><img src="images/honda.png"><p>Honda</p></div>
+      <div class="brand hidden"><img src="images/Ford.png"><p>Ford</p></div>
+      <div class="brand hidden"><img src="images/Lamborghini.png"><p>Lamborghini</p></div>
+      <div class="brand hidden"><img src="images/Ferrari.png"><p>Ferrari</p></div>
+      <div class="brand hidden"><img src="images/Tesla.png"><p>Tesla</p></div>
+      <div class="brand hidden"><img src="images/Porsche.jpeg"><p>Porsche</p></div>
+      <div class="brand hidden"><img src="images/Lotus.jpg"><p>Lotus</p></div>
+      <div class="brand hidden"><img src="images/Bentley.jpeg"><p>Bentley</p></div>
+    </div>
+
+    <button class="view-btn" id="toggleBtn" onclick="toggleBrands()">View More Brands</button>
+  </div>
+
+  <!-- Tabs -->
+  <ul id="tabs-h" class="tabs">
+    <li data-title="Budget">
+      <input type="button" value="Under 5 Lakh">
+      <input type="button" value="Under 6 Lakh">
+      <input type="button" value="Under 7 Lakh">
+      <input type="button" value="Under 8 Lakh">
+      <input type="button" value="Under 9 Lakh">
+      <input type="button" value="Under 10 Lakh">
+    </li>
+    <li data-title="Seating Capacity">
+      <input type="button" value="5 Seat">
+      <input type="button" value="6 Seat">
+      <input type="button" value="7 Seat">
+      <input type="button" value="8 Seat">
+    </li>
+    <li data-title="Fuel Type">
+      <input type="button" value="ELECTRIC">
+      <input type="button" value="PETROL">
+      <input type="button" value="CNG">
+      <input type="button" value="Hybrid">
+    </li>
+  </ul>
+
+  <!-- Footer -->
+  <footer class="border-top text-center">
+    <div class="container">
+      <p class="mb-2">&copy; 2025 CarShop, Dhruv Mistry.</p>
+     
+    </div>
+  </footer>
+
+  <script>
+    function toggleBrands() {
+      const hiddenBrands = document.querySelectorAll('.brand.hidden');
+      const button = document.getElementById('toggleBtn');
+      const isHidden = hiddenBrands[0].style.display === '' || hiddenBrands[0].style.display === 'none';
+
+      hiddenBrands.forEach(brand => {
+        brand.style.display = isHidden ? 'block' : 'none';
+      });
+
+      button.textContent = isHidden ? 'View Less Brands' : 'View More Brands';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      new VanillaTabs({
+        selector: '#tabs-h',
+        type: 'horizontal',
+        responsiveBreak: 840,
+        activeIndex: 0
+      });
+    });
+  </script>
+  <script src="dist/vanilla-tabs.min.js"></script>
+  <script src="js/bootstrap.bundle.js"></script>
+</body>
+</html>
